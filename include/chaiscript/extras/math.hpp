@@ -12,7 +12,7 @@ namespace chaiscript {
         return m;
       }
 
-      ModulePtr bootstrap(const std::string &type, ModulePtr m = std::make_shared<Module>())
+      ModulePtr bootstrap(ModulePtr m = std::make_shared<Module>())
       {
         floor<double, double>(m);
         floor<long double, long double>(m);
