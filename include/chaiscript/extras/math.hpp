@@ -1,8 +1,7 @@
 #include <cmath>
 #include <memory>
 
-#include "../dispatchkit/dispatchkit.hpp"
-#include "../chaiscript.hpp"
+#include <chaiscript/chaiscript.hpp>
 
 namespace chaiscript {
   namespace extras {
