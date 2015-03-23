@@ -1,4 +1,5 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
+//#include <sstream>
 #include "catch.hpp"
 
 #include <chaiscript/chaiscript.hpp>
@@ -68,10 +69,10 @@ TEST_CASE( "Math functions work", "[math]" ) {
   CHECK(chai.eval<double>("trunc(0.5)") == trunc(0.5));
   CHECK(chai.eval<double>("round(0.5)") == round(0.5));
   CHECK(chai.eval<long int>("lround(0.5)") == lround(0.5));
-  // CHECK(chai.eval<double>("llround(0.5)") == llround(0.5)); // long longs do not work
+  CHECK(chai.eval<long long int>("llround(0.5)") == llround(0.5)); // long longs do not work
   CHECK(chai.eval<double>("rint(0.5)") == rint(0.5));
   CHECK(chai.eval<long int>("lrint(0.5)") == lrint(0.5));
-  // CHECK(chai.eval<double>("llrint(0.5)") == llrint(0.5));
+  CHECK(chai.eval<long long int>("llrint(0.5)") == llrint(0.5));
   CHECK(chai.eval<double>("nearbyint(0.5)") == nearbyint(0.5));
   CHECK(chai.eval<double>("remainder(6.0, 2.5)") == remainder(6.0, 2.5));
   int quot = 0; CHECK(chai.eval<double>("var quot = 0\nremquo(6.0, 2.5, quot)") == remquo(6.0, 2.5, &quot));

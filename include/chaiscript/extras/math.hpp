@@ -1,8 +1,7 @@
 #include <cmath>
 #include <memory>
 
-#include "../dispatchkit/dispatchkit.hpp"
-#include "../chaiscript.hpp"
+#include <chaiscript/chaiscript.hpp>
 
 namespace chaiscript {
   namespace extras {
@@ -300,12 +299,12 @@ namespace chaiscript {
       }
 
       // long long ints do not work
-      /*template<typename Ret, typename Param>
+      template<typename Ret, typename Param>
       ModulePtr llround(ModulePtr m = std::make_shared<Module>())
       {
     	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::llround)), "llround");
     	  return m;
-      }*/
+      }
 
       template<typename Ret, typename Param>
       ModulePtr rint(ModulePtr m = std::make_shared<Module>())
@@ -322,12 +321,12 @@ namespace chaiscript {
       }
 
       // long long ints do not work
-      /*template<typename Ret, typename Param>
+      template<typename Ret, typename Param>
       ModulePtr llrint(ModulePtr m = std::make_shared<Module>())
       {
     	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::llrint)), "llrint");
     	  return m;
-      }*/
+      }
 
       template<typename Ret, typename Param>
       ModulePtr nearbyint(ModulePtr m = std::make_shared<Module>())
@@ -683,9 +682,9 @@ namespace chaiscript {
         lround<long int, long double>(m);
 
         // long long ints do not work
-        /*llround<long long int, double>(m);
+        llround<long long int, double>(m);
         llround<long long int, float>(m);
-        llround<long long int, long double>(m);*/
+        llround<long long int, long double>(m);
 
         rint<double, double>(m);
         rint<float, float>(m);
@@ -696,9 +695,9 @@ namespace chaiscript {
         lrint<long int, long double>(m);
 
         // long long ints do not work
-        /*llrint<long long int, double>(m);
+        llrint<long long int, double>(m);
         llrint<long long int, float>(m);
-        llrint<long long int, long double>(m);*/
+        llrint<long long int, long double>(m);
 
         nearbyint<double, double>(m);
         nearbyint<float, float>(m);
