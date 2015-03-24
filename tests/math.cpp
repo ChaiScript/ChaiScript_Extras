@@ -32,7 +32,7 @@ TEST_CASE( "Math functions work", "[math]" ) {
 
   CHECK(chai.eval<double>("acosh(1.0)") == acosh(1.0));
   CHECK(chai.eval<double>("asinh(0.5)") == asinh(0.5));
-  CHECK(chai.eval<double>("atanh(0.5)") == atanh(0.5));
+  CHECK(chai.eval<double>("atanh(0.5)") == Approx(atanh(0.5)));
 
   // EXPONENTIAL AND LOGARITHMIC FUNCTIONS
   CHECK(chai.eval<double>("exp(0.5)") == exp(0.5));
