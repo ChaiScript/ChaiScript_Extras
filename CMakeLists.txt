@@ -217,4 +217,8 @@ add_executable(math_test tests/math.cpp)
 target_link_libraries(math_test ${LIBS})
 ADD_CATCH_TESTS(math_test)
 
+add_executable(string_id_test tests/string_id.cpp)
+target_link_libraries(string_id_test ${LIBS})
+ADD_CATCH_TESTS(string_id_test)
+
 
