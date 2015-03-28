@@ -1,7 +1,7 @@
-set(BII_LIB_DEPS "pthread -ldl ../../lib/libfoonathan_string_id.a")
+set(BII_LIB_DEPS "pthread -ldl")
 
 ADD_BIICODE_TARGETS()
-TARGET_INCLUDE_DIRECTORIES(${BII_BLOCK_TARGET} INTERFACE "${CMAKE_CURRENT_BINARY_DIR}/../foonathan_string_id")
+#TARGET_INCLUDE_DIRECTORIES(${BII_BLOCK_TARGET} INTERFACE "${CMAKE_CURRENT_BINARY_DIR}/../foonathan_string_id/foonathan/string_id")
 
 
 IF(APPLE)
