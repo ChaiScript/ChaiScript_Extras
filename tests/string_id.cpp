@@ -6,11 +6,6 @@
 #include <chaiscript/chaiscript_stdlib.hpp>
 #include "../include/chaiscript/extras/string_id.hpp"
 
-#include <string_id/database.hpp> // for the databases
-#include <string_id/error.hpp> // for error handling
-#include <string_id/generator.hpp> // for the generator classes
-#include <string_id/string_id.hpp> // for the string_id
-
 #include <iostream>
 
 TEST_CASE( "string_id functions work", "[string_id]" ) {

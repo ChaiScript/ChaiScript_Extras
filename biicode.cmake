@@ -1,4 +1,4 @@
-set(BII_LIB_DEPS "pthread -ldl")
+set(BII_LIB_DEPS ${BII_LIB_DEPS} pthread dl)
 
 ADD_BIICODE_TARGETS()
 #TARGET_INCLUDE_DIRECTORIES(${BII_BLOCK_TARGET} INTERFACE "${CMAKE_CURRENT_BINARY_DIR}/../foonathan_string_id/foonathan/string_id")
