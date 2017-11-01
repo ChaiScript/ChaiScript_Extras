@@ -90,8 +90,12 @@ TEST_CASE( "Math functions work", "[math]" ) {
   // CLASSIFICATION FUNCTIONS
   CHECK(chai.eval<int>("fpclassify(0.5)") == std::fpclassify(0.5));
   CHECK(chai.eval<bool>("isfinite(0.5)") == std::isfinite(0.5));
+  #ifndef CHAISCRIPT_EXTRAS_MATH_DISABLE_ISINF
   CHECK(chai.eval<bool>("isinf(0.5)") == std::isinf(0.5));
+  #endif
+  #ifndef CHAISCRIPT_EXTRAS_MATH_DISABLE_ISNAN
   CHECK(chai.eval<bool>("isnan(0.5)") == std::isnan(0.5));
+  #endif
   CHECK(chai.eval<bool>("isnormal(0.5)") == std::isnormal(0.5));
   CHECK(chai.eval<bool>("signbit(0.5)") == std::signbit(0.5));
 
