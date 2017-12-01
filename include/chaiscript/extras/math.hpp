@@ -438,19 +438,23 @@ namespace chaiscript {
         return m;
       }
 
+      #ifndef CHAISCRIPT_EXTRAS_MATH_DISABLE_ISINF
       template<typename Ret, typename Param>
       ModulePtr isinf(ModulePtr m = std::make_shared<Module>())
       {
         m->add(chaiscript::fun([](Param p){ return std::isinf(p); }), "isinf");
         return m;
       }
+      #endif
 
+      #ifndef CHAISCRIPT_EXTRAS_MATH_DISABLE_ISNAN
       template<typename Ret, typename Param>
       ModulePtr isnan(ModulePtr m = std::make_shared<Module>())
       {
         m->add(chaiscript::fun([](Param p){ return std::isnan(p); }), "isnan");
         return m;
       }
+      #endif
 
       template<typename Ret, typename Param>
       ModulePtr isnormal(ModulePtr m = std::make_shared<Module>())
@@ -762,13 +766,17 @@ namespace chaiscript {
         isfinite<bool, double>(m);
         isfinite<bool, long double>(m);
 
+        #ifndef CHAISCRIPT_EXTRAS_MATH_DISABLE_ISINF
         isinf<bool, float>(m);
         isinf<bool, double>(m);
         isinf<bool, long double>(m);
+        #endif
 
+        #ifndef CHAISCRIPT_EXTRAS_MATH_DISABLE_ISNAN
         isnan<bool, float>(m);
         isnan<bool, double>(m);
         isnan<bool, long double>(m);
+        #endif
 
         isnormal<bool, float>(m);
         isnormal<bool, double>(m);
