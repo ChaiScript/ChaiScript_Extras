@@ -13,6 +13,7 @@ else()
   option(MULTITHREAD_SUPPORT_ENABLED "Multithreaded Support Enabled" TRUE)
 endif()
 
+option(BUILD_IN_CPP17_MODE "Build with C++17 flags" FALSE)
 
 
 if(CMAKE_COMPILER_IS_GNUCC)
@@ -80,13 +81,21 @@ enable_testing()
 if(CMAKE_COMPILER_IS_GNUCC)
   execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
 
-  if(GCC_VERSION VERSION_LESS 5.0)
+  if(GCC_VERSION VERSION_LESS 4.9)
     set(CPP14_FLAG "-std=c++1y")
+  else()
+    if (BUILD_IN_CPP17_MODE)
+      set(CPP14_FLAG "-std=c++1z")
+    else()
+      set(CPP14_FLAG "-std=c++14")
+    endif()
+  endif()
+else()
+  if (BUILD_IN_CPP17_MODE)
+    set(CPP14_FLAG "-std=c++1z")
   else()
     set(CPP14_FLAG "-std=c++14")
   endif()
-else()
-  set(CPP14_FLAG "-std=c++14")
 endif()
 
 if(MSVC)
@@ -170,7 +179,7 @@ set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} ${LINKER_FLAGS}")
 
 
 
-set(CHAISCRIPT_BRANCH master)
+set(CHAISCRIPT_BRANCH develop)
 
 file(DOWNLOAD https://github.com/ChaiScript/ChaiScript/archive/${CHAISCRIPT_BRANCH}.tar.gz "${CMAKE_BINARY_DIR}/chaiscript/chaiscript-${CHAISCRIPT_BRANCH}.tar.gz"
   INACTIVITY_TIMEOUT 180 TIMEOUT 180 TLS_VERIFY off)
