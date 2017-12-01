@@ -10,49 +10,50 @@ namespace chaiscript {
       template<typename Ret, typename Param>
       ModulePtr cos(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::cos)), "cos");
+        m->add(chaiscript::fun([](Param p){ return std::cos(p); }), "cos");
+        m->add(chaiscript::fun([](Param p){ return std::cos(p); }), "cos");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr sin(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::sin)), "sin");
+        m->add(chaiscript::fun([](Param p){ return std::sin(p); }), "sin");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr tan(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::tan)), "tan");
+        m->add(chaiscript::fun([](Param p){ return std::tan(p); }), "tan");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr acos(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::acos)), "acos");
+        m->add(chaiscript::fun([](Param p){ return std::acos(p); }), "acos");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr asin(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::asin)), "asin");
+        m->add(chaiscript::fun([](Param p){ return std::asin(p); }), "asin");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr atan(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::atan)), "atan");
+        m->add(chaiscript::fun([](Param p){ return std::atan(p); }), "atan");
         return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr atan2(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::atan2)), "atan2");
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::atan2(p1, p2); }), "atan2");
         return m;
       }
 
@@ -60,42 +61,42 @@ namespace chaiscript {
       template<typename Ret, typename Param>
       ModulePtr cosh(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::cosh)), "cosh");
+        m->add(chaiscript::fun([](Param p){ return std::cosh(p); }), "cosh");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr sinh(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::sinh)), "sinh");
+        m->add(chaiscript::fun([](Param p){ return std::sinh(p); }), "sinh");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr tanh(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::tanh)), "tanh");
+        m->add(chaiscript::fun([](Param p){ return std::tanh(p); }), "tanh");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr acosh(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::acosh)), "acosh");
+        m->add(chaiscript::fun([](Param p){ return std::acosh(p); }), "acosh");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr asinh(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::asinh)), "asinh");
+        m->add(chaiscript::fun([](Param p){ return std::asinh(p); }), "asinh");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr atanh(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::atanh)), "atanh");
+        m->add(chaiscript::fun([](Param p){ return std::atanh(p); }), "atanh");
         return m;
       }
 
@@ -103,126 +104,126 @@ namespace chaiscript {
       template<typename Ret, typename Param>
       ModulePtr exp(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::exp)), "exp");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::exp(p); }), "exp");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr frexp(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::frexp)), "frexp");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::frexp(p1, p2); }), "frexp");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr ldexp(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::ldexp)), "ldexp");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::ldexp(p1, p2); }), "ldexp");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr log(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::log)), "log");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::log(p); }), "log");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr log10(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::log10)), "log10");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::log10(p); }), "log10");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr modf(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::modf)), "modf");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::modf(p1, p2); }), "modf");
+        return m;
       }
       template<typename Ret, typename Param>
       ModulePtr exp2(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::exp2)), "exp2");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::exp2(p); }), "exp2");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr expm1(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::expm1)), "expm1");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::expm1(p); }), "expm1");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr ilogb(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::ilogb)), "ilogb");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::ilogb(p); }), "ilogb");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr log1p(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::log1p)), "log1p");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::log1p(p); }), "log1p");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr log2(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::log2)), "log2");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::log2(p); }), "log2");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr logb(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::logb)), "logb");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::logb(p); }), "logb");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr scalbn(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::scalbn)), "scalbn");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::scalbn(p1, p2); }), "scalbn");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr scalbln(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::scalbln)), "scalbln");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::scalbln(p1, p2); }), "scalbln");
+        return m;
       }
 
       // POWER FUNCTIONS
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr pow(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::pow)), "pow");
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::pow(p1, p2); }), "pow");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr sqrt(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::sqrt)), "sqrt");
+        m->add(chaiscript::fun([](Param p){ return std::sqrt(p); }), "sqrt");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr cbrt(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::cbrt)), "cbrt");
+        m->add(chaiscript::fun([](Param p){ return std::cbrt(p); }), "cbrt");
         return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr hypot(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::hypot)), "hypot");
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::hypot(p1, p2); }), "hypot");
         return m;
       }
 
@@ -230,28 +231,28 @@ namespace chaiscript {
       template<typename Ret, typename Param>
       ModulePtr erf(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::erf)), "erf");
+        m->add(chaiscript::fun([](Param p){ return std::erf(p); }), "erf");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr erfc(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::erfc)), "erfc");
+        m->add(chaiscript::fun([](Param p){ return std::erfc(p); }), "erfc");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr tgamma(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::tgamma)), "tgamma");
+        m->add(chaiscript::fun([](Param p){ return std::tgamma(p); }), "tgamma");
         return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr lgamma(ModulePtr m = std::make_shared<Module>())
       {
-        m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::lgamma)), "lgamma");
+        m->add(chaiscript::fun([](Param p){ return std::lgamma(p); }), "lgamma");
         return m;
       }
 
@@ -259,210 +260,210 @@ namespace chaiscript {
       template<typename Ret, typename Param>
       ModulePtr ceil(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::ceil)), "ceil");
-		  return m;
+        m->add(chaiscript::fun([](Param p){ return std::ceil(p); }), "ceil");
+      return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr floor(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::floor)), "floor");
-		  return m;
+        m->add(chaiscript::fun([](Param p){ return std::floor(p); }), "floor");
+      return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr fmod(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::fmod)), "fmod");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::fmod(p1, p2); }), "fmod");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr trunc(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::trunc)), "trunc");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::trunc(p); }), "trunc");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr round(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::round)), "round");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::round(p); }), "round");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr lround(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::lround)), "lround");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::lround(p); }), "lround");
+        return m;
       }
 
       // long long ints do not work
       template<typename Ret, typename Param>
       ModulePtr llround(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::llround)), "llround");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::llround(p); }), "llround");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr rint(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::rint)), "rint");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::rint(p); }), "rint");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr lrint(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::lrint)), "lrint");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::lrint(p); }), "lrint");
+        return m;
       }
 
       // long long ints do not work
       template<typename Ret, typename Param>
       ModulePtr llrint(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::llrint)), "llrint");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::llrint(p); }), "llrint");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr nearbyint(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::nearbyint)), "nearbyint");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::nearbyint(p); }), "nearbyint");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr remainder(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::remainder)), "remainder");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::remainder(p1, p2); }), "remainder");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2, typename Param3>
       ModulePtr remquo(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2, Param3)>(&std::remquo)), "remquo");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2, Param3 p3){ return std::remquo(p1, p2, p3); }), "remquo");
+        return m;
       }
 
       // FLOATING-POINT MANIPULATION FUNCTIONS
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr copysign(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::copysign)), "copysign");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::copysign(p1, p2); }), "copysign");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr nan(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::nan)), "nan");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::nan(p); }), "nan");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr nextafter(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::nextafter)), "nextafter");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::nextafter(p1, p2); }), "nextafter");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr nexttoward(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::nexttoward)), "nexttoward");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::nexttoward(p1, p2); }), "nexttoward");
+        return m;
       }
 
       // MINIMUM, MAXIMUM, DIFFERENCE FUNCTIONS
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr fdim(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::fdim)), "fdim");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::fdim(p1, p2); }), "fdim");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr fmax(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::fmax)), "fmax");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::fmax(p1, p2); }), "fmax");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr fmin(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::fmin)), "fmin");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::fmin(p1, p2); }), "fmin");
+        return m;
       }
 
       // OTHER FUNCTIONS
       template<typename Ret, typename Param>
       ModulePtr fabs(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::fabs)), "fabs");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::fabs(p); }), "fabs");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr abs(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::abs)), "abs");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::abs(p); }), "abs");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2, typename Param3>
       ModulePtr fma(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2, Param3)>(&std::fma)), "fma");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2, Param3 p3){ return std::fma(p1, p2, p3); }), "fma");
+        return m;
       }
 
       // CLASSIFICATION FUNCTIONS
       template<typename Ret, typename Param>
       ModulePtr fpclassify(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::fpclassify)), "fpclassify");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::fpclassify(p); }), "fpclassify");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr isfinite(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::isfinite)), "isfinite");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::isfinite(p); }), "isfinite");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr isinf(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::isinf)), "isinf");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::isinf(p); }), "isinf");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr isnan(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::isnan)), "isnan");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::isnan(p); }), "isnan");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr isnormal(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::isnormal)), "isnormal");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::isnormal(p); }), "isnormal");
+        return m;
       }
 
       template<typename Ret, typename Param>
       ModulePtr signbit(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param)>(&std::signbit)), "signbit");
-    	  return m;
+        m->add(chaiscript::fun([](Param p){ return std::signbit(p); }), "signbit");
+        return m;
       }
 
 
@@ -470,48 +471,48 @@ namespace chaiscript {
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr isgreater(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::isgreater)), "isgreater");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::isgreater(p1, p2); }), "isgreater");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr isgreaterequal(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::isgreaterequal)), "isgreaterequal");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::isgreaterequal(p1, p2); }), "isgreaterequal");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr isless(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::isless)), "isless");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::isless(p1, p2); }), "isless");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr islessequal(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::islessequal)), "islessequal");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::islessequal(p1, p2); }), "islessequal");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr islessgreater(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::islessgreater)), "islessgreater");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::islessgreater(p1, p2); }), "islessgreater");
+        return m;
       }
 
       template<typename Ret, typename Param1, typename Param2>
       ModulePtr isunordered(ModulePtr m = std::make_shared<Module>())
       {
-    	  m->add(chaiscript::fun(static_cast<Ret (*)(Param1, Param2)>(&std::isunordered)), "isunordered");
-    	  return m;
+        m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::isunordered(p1, p2); }), "isunordered");
+        return m;
       }
 
       ModulePtr bootstrap(ModulePtr m = std::make_shared<Module>())
       {
-    	// TRIG FUNCTIONS
+        // TRIG FUNCTIONS
         cos<double, double>(m);
         cos<float, float>(m);
         cos<long double, long double>(m);
