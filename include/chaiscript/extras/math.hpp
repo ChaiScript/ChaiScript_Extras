@@ -11,7 +11,6 @@ namespace chaiscript {
       ModulePtr cos(ModulePtr m = std::make_shared<Module>())
       {
         m->add(chaiscript::fun([](Param p){ return std::cos(p); }), "cos");
-        m->add(chaiscript::fun([](Param p){ return std::cos(p); }), "cos");
         return m;
       }
 
