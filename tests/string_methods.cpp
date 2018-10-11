@@ -6,13 +6,29 @@
 #include <chaiscript/chaiscript_stdlib.hpp>
 #include "../include/chaiscript/extras/string_methods.hpp"
 
-#include <iostream>
+TEST_CASE( "string_methods functions work", "[string_methods]" ) {
+  auto stdlib = chaiscript::Std_Lib::library();
+  chaiscript::ChaiScript chai(stdlib);
 
-TEST_CASE( "Math functions work", "[math]" ) {
+  // Add the string_methods module.
   auto stringmethods = chaiscript::extras::string_methods::bootstrap();
-
-  chaiscript::ChaiScript chai;
   chai.add(stringmethods);
 
+  // replace(string, string)
+  CHECK(chai.eval<std::string>("\"Hello World!\".replace(\"Hello\", \"Goodbye\")") == "Goodbye World!");
+
+  // replace(char, char)
+  CHECK(chai.eval<std::string>("\"Hello World!\".replace('e', 'i')") == "Hillo World!");
+
+  // trim()
   CHECK(chai.eval<std::string>("\"   Hello World!    \".trim()") == "Hello World!");
+
+  // split()
+  CHECK(chai.eval<std::string>("\"Hello,World,How,Are,You\".split(\",\")[1]") == "World");
+
+  // toLowerCase()
+  CHECK(chai.eval<std::string>("\"HeLLO WoRLD!\".toLowerCase()") == "hello world!");
+
+  // toUpperCase()
+  CHECK(chai.eval<std::string>("\"Hello World!\".toUpperCase()") == "HELLO WORLD!");
 }
