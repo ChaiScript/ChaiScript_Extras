@@ -175,20 +175,14 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${LINKER_FLAGS}")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${LINKER_FLAGS}")
 set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} ${LINKER_FLAGS}")
 
-
-
-
-
-set(CHAISCRIPT_BRANCH develop)
-
+# ChaiScript
+set(CHAISCRIPT_BRANCH v5.8.6)
+set(CHAISCRIPT_VERSION 5.8.6)
 file(DOWNLOAD https://github.com/ChaiScript/ChaiScript/archive/${CHAISCRIPT_BRANCH}.tar.gz "${CMAKE_BINARY_DIR}/chaiscript/chaiscript-${CHAISCRIPT_BRANCH}.tar.gz"
   INACTIVITY_TIMEOUT 180 TIMEOUT 180 TLS_VERIFY off)
-
 execute_process(COMMAND ${CMAKE_COMMAND} -E tar -xf "${CMAKE_BINARY_DIR}/chaiscript/chaiscript-${CHAISCRIPT_BRANCH}.tar.gz" "${CMAKE_BINARY_DIR}/chaiscript"
   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/chaiscript")
-
-include_directories("${CMAKE_BINARY_DIR}/chaiscript/ChaiScript-${CHAISCRIPT_BRANCH}/include")
-
+include_directories("${CMAKE_BINARY_DIR}/chaiscript/ChaiScript-${CHAISCRIPT_VERSION}/include")
 
 # Add catch tests macro
 macro(ADD_CATCH_TESTS executable)
@@ -230,4 +224,6 @@ add_executable(string_id_test tests/string_id.cpp)
 target_link_libraries(string_id_test ${LIBS})
 ADD_CATCH_TESTS(string_id_test)
 
-
+add_executable(string_methods_test tests/string_methods.cpp)
+target_link_libraries(string_methods_test ${LIBS})
+ADD_CATCH_TESTS(string_methods_test)
