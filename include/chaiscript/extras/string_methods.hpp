@@ -21,9 +21,6 @@ namespace chaiscript {
     namespace string_methods {
       ModulePtr bootstrap(ModulePtr m = std::make_shared<Module>())
       {
-        // Add lists of strings.
-        m->add(bootstrap::standard_library::vector_type<std::vector<std::string>>("StringVector"));
-
         // string::replace(std::string search, std::string replace)
         m->add(fun([](const std::string& subject, const std::string& search, const std::string& replace) {
           std::string result(subject);
