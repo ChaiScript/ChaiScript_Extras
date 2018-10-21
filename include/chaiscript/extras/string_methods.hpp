@@ -9,6 +9,10 @@
  * string::split(string token)
  * string::toLowerCase()
  * string::toUpperCase()
+ *
+ * To allow selecting indexes from split(), ensure VectorString type is added:
+ *
+ * chai.add(chaiscript::bootstrap::standard_library::vector_type<std::vector<std::string>>("VectorString"));
  */
 #include <algorithm>
 #include <string>
