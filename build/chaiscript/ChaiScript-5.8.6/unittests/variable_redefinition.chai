@@ -1,2 +1,0 @@
-assert_throws("Variable already defined", fun() { auto y = 10; auto y = 20; })
-

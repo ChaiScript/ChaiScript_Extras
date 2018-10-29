@@ -1,2 +1,0 @@
-
-assert_throws("Parse failure", fun() { eval("[\"hello\":5,\"j\",\"k\"]") } );

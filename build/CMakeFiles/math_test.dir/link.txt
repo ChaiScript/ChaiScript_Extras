@@ -1,1 +1,0 @@
-/usr/bin/c++      -std=c++14 -pthread -rdynamic CMakeFiles/math_test.dir/tests/math.cpp.o  -o math_test -ldl 
