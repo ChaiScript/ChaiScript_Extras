@@ -23,8 +23,10 @@ namespace chaiscript {
         m->add(constructor<foonathan::string_id::default_database ()>(), "default_database");
 
         // basic_database
+#ifdef FOONATHAN_STRING_ID_DATABASE
         m->add(user_type<foonathan::string_id::basic_database>(), "basic_database");
         m->add(base_class<foonathan::string_id::basic_database, foonathan::string_id::default_database>());
+#endif
 
         // string_id
         m->add(user_type<foonathan::string_id::string_id>(), "string_id");
