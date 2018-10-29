@@ -9,6 +9,10 @@
  * string::split(string token)
  * string::toLowerCase()
  * string::toUpperCase()
+ *
+ * To allow selecting indexes from split(), ensure VectorString type is added:
+ *
+ * chai.add(chaiscript::bootstrap::standard_library::vector_type<std::vector<std::string>>("VectorString"));
  */
 #include <algorithm>
 #include <string>
@@ -21,9 +25,6 @@ namespace chaiscript {
     namespace string_methods {
       ModulePtr bootstrap(ModulePtr m = std::make_shared<Module>())
       {
-        // Add lists of strings.
-        m->add(bootstrap::standard_library::vector_type<std::vector<std::string>>("StringVector"));
-
         // string::replace(std::string search, std::string replace)
         m->add(fun([](const std::string& subject, const std::string& search, const std::string& replace) {
           std::string result(subject);
