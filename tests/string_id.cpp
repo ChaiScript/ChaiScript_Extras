@@ -23,7 +23,7 @@ TEST_CASE( "string_id functions work", "[string_id]" ) {
   )"");
 
   using namespace foonathan::string_id::literals;
-  CHECK(chai.eval<const foonathan::string_id::string_id &>("id") == "Test0815"_id);
+  CHECK(chai.eval<const foonathan::string_id::string_id &>("id") == "Test0815");
 }
 
 

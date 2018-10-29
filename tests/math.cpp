@@ -11,7 +11,8 @@
 TEST_CASE( "Math functions work", "[math]" ) {
   auto mathlib = chaiscript::extras::math::bootstrap();
 
-  chaiscript::ChaiScript chai;
+  auto stdlib = chaiscript::Std_Lib::library();
+  chaiscript::ChaiScript chai(stdlib);
   chai.add(mathlib);
 
   // TRIG FUNCTIONS

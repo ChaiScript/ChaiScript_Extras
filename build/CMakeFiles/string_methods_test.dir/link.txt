@@ -1,0 +1,1 @@
+/usr/bin/c++      -std=c++14 -pthread -rdynamic CMakeFiles/string_methods_test.dir/tests/string_methods.cpp.o  -o string_methods_test -ldl 
