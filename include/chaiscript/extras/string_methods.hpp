@@ -14,6 +14,9 @@
  *
  * chai.add(chaiscript::bootstrap::standard_library::vector_type<std::vector<std::string>>("VectorString"));
  */
+
+#pragma once
+
 #include <algorithm>
 #include <string>
 #include <vector>
