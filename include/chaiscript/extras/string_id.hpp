@@ -1,3 +1,5 @@
+#ifndef CHAISCRIPT_EXTRAS_STRING_ID_HPP_
+#define CHAISCRIPT_EXTRAS_STRING_ID_HPP_
 
 #include <cmath>
 #include <memory>
@@ -65,3 +67,4 @@ namespace chaiscript {
   }
 }
 
+#endif /* CHAISCRIPT_EXTRAS_STRING_ID_HPP_ */
