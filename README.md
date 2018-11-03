@@ -28,6 +28,11 @@ chai.add(mathlib);
 var result = cos(0.5f)
 ```
 
+#### Options
+
+Compile with one of the following flags to enable or disable features...
+- `CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED` When enabled, will skip some of the advanced math functions.
+
 ### String ID
 
 Adds [String ID](https://github.com/foonathan/string_id) support to ChaiScript.
