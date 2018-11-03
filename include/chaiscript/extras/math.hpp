@@ -1,3 +1,6 @@
+#ifndef CHAISCRIPT_EXTRAS_MATH_HPP_
+#define CHAISCRIPT_EXTRAS_MATH_HPP_
+
 #include <cmath>
 #include <memory>
 
@@ -807,3 +810,5 @@ namespace chaiscript {
     }
   }
 }
+
+#endif /* CHAISCRIPT_EXTRAS_MATH_HPP_ */

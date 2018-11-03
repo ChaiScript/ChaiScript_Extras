@@ -14,6 +14,10 @@
  *
  * chai.add(chaiscript::bootstrap::standard_library::vector_type<std::vector<std::string>>("VectorString"));
  */
+
+#ifndef CHAISCRIPT_EXTRAS_STRING_METHODS_HPP_
+#define CHAISCRIPT_EXTRAS_STRING_METHODS_HPP_
+
 #include <algorithm>
 #include <string>
 #include <vector>
@@ -95,3 +99,5 @@ namespace chaiscript {
     }
   }
 }
+
+#endif /* CHAISCRIPT_EXTRAS_STRING_METHODS_HPP_ */
