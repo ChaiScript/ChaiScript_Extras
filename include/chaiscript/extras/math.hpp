@@ -81,6 +81,7 @@ namespace chaiscript {
         return m;
       }
 
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
       template<typename Ret, typename Param>
       ModulePtr acosh(ModulePtr m = std::make_shared<Module>())
       {
@@ -101,6 +102,7 @@ namespace chaiscript {
         m->add(chaiscript::fun([](Param p){ return std::atanh(p); }), "atanh");
         return m;
       }
+#endif
 
       // EXPONENTIAL AND LOGARITHMIC FUNCTIONS
       template<typename Ret, typename Param>
@@ -144,6 +146,8 @@ namespace chaiscript {
         m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::modf(p1, p2); }), "modf");
         return m;
       }
+
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
       template<typename Ret, typename Param>
       ModulePtr exp2(ModulePtr m = std::make_shared<Module>())
       {
@@ -199,6 +203,7 @@ namespace chaiscript {
         m->add(chaiscript::fun([](Param1 p1, Param2 p2){ return std::scalbln(p1, p2); }), "scalbln");
         return m;
       }
+#endif
 
       // POWER FUNCTIONS
       template<typename Ret, typename Param1, typename Param2>
@@ -215,6 +220,7 @@ namespace chaiscript {
         return m;
       }
 
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
       template<typename Ret, typename Param>
       ModulePtr cbrt(ModulePtr m = std::make_shared<Module>())
       {
@@ -257,6 +263,7 @@ namespace chaiscript {
         m->add(chaiscript::fun([](Param p){ return std::lgamma(p); }), "lgamma");
         return m;
       }
+#endif
 
       // ROUNDING AND REMAINDER FUNCTIONS
       template<typename Ret, typename Param>
@@ -280,6 +287,7 @@ namespace chaiscript {
         return m;
       }
 
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
       template<typename Ret, typename Param>
       ModulePtr trunc(ModulePtr m = std::make_shared<Module>())
       {
@@ -410,6 +418,7 @@ namespace chaiscript {
         m->add(chaiscript::fun([](Param p){ return std::fabs(p); }), "fabs");
         return m;
       }
+#endif
 
       template<typename Ret, typename Param>
       ModulePtr abs(ModulePtr m = std::make_shared<Module>())
@@ -418,6 +427,7 @@ namespace chaiscript {
         return m;
       }
 
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
       template<typename Ret, typename Param1, typename Param2, typename Param3>
       ModulePtr fma(ModulePtr m = std::make_shared<Module>())
       {
@@ -432,6 +442,7 @@ namespace chaiscript {
         m->add(chaiscript::fun([](Param p){ return std::fpclassify(p); }), "fpclassify");
         return m;
       }
+#endif
 
       template<typename Ret, typename Param>
       ModulePtr isfinite(ModulePtr m = std::make_shared<Module>())
@@ -556,6 +567,7 @@ namespace chaiscript {
         tanh<float, float>(m);
         tanh<long double, long double>(m);
 
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
         acosh<double, double>(m);
         acosh<float, float>(m);
         acosh<long double, long double>(m);
@@ -567,6 +579,7 @@ namespace chaiscript {
         atanh<double, double>(m);
         atanh<float, float>(m);
         atanh<long double, long double>(m);
+#endif
 
         // EXPONENTIAL AND LOGARITHMIC FUNCTIONS
         exp<double, double>(m);
@@ -593,6 +606,7 @@ namespace chaiscript {
         modf<float, float, float *>(m);
         modf<long double, long double, long double *>(m);
 
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
         exp2<double, double>(m);
         exp2<float, float>(m);
         exp2<long double, long double>(m);
@@ -624,6 +638,7 @@ namespace chaiscript {
         scalbln<double, double, long int>(m);
         scalbln<float, float, long int>(m);
         scalbln<long double, long double, long int>(m);
+#endif
 
         // POWER FUNCTIONS
         pow<double, double, double>(m);
@@ -634,6 +649,7 @@ namespace chaiscript {
         sqrt<float, float>(m);
         sqrt<long double, long double>(m);
 
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
         cbrt<double, double>(m);
         cbrt<float, float>(m);
         cbrt<long double, long double>(m);
@@ -658,6 +674,7 @@ namespace chaiscript {
         lgamma<double, double>(m);
         lgamma<float, float>(m);
         lgamma<long double, long double>(m);
+#endif
 
         // ROUNDING AND REMAINDER FUNCTIONS
         ceil<double, double>(m);
@@ -672,6 +689,7 @@ namespace chaiscript {
         fmod<float, float, float>(m);
         fmod<long double, long double, long double>(m);
 
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
         trunc<double, double>(m);
         trunc<float, float>(m);
         trunc<long double, long double>(m);
@@ -746,11 +764,13 @@ namespace chaiscript {
         fabs<double, double>(m);
         fabs<float, float>(m);
         fabs<long double, long double>(m);
+#endif
 
         abs<double, double>(m);
         abs<float, float>(m);
         abs<long double, long double>(m);
 
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
         fma<double, double, double, double>(m);
         fma<float, float, float, float>(m);
         fma<long double, long double, long double, long double>(m);
@@ -759,6 +779,7 @@ namespace chaiscript {
         fpclassify<int, float>(m);
         fpclassify<int, double>(m);
         fpclassify<int, long double>(m);
+#endif
 
         isfinite<bool, float>(m);
         isfinite<bool, double>(m);
