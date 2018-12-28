@@ -1,18 +1,18 @@
 # ChaiScript Extras
 
-User contributed wrappers for ChaiScript.
+User contributed wrappers and modules for ChaiScript.
 
 ## Modules
 
 - [Math](#math): Adds common math methods to ChaiScript.
 - [String ID](#string-id): String hashing with [string_id](https://github.com/foonathan/string_id)
-- [String Methods](#string-methods): Introduces some extra string methods to ChaiScript strings
+- [String](#string): Adds some extra string methods to ChaiScript strings
 
-### Math
+## Math
 
 The Math module adds some standard math functions to ChaiScript.
 
-#### Install
+### Install
 ``` cpp
 #include "chaiscript/extras/math.hpp"
 ```
@@ -22,22 +22,22 @@ auto mathlib = chaiscript::extras::math::bootstrap();
 chai.add(mathlib);
 ```
 
-#### Usage
+### Usage
 
 ``` chaiscript
 var result = cos(0.5f)
 ```
 
-#### Options
+### Options
 
 Compile with one of the following flags to enable or disable features...
 - `CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED` When enabled, will skip some of the advanced math functions.
 
-### String ID
+## String ID
 
 Adds [String ID](https://github.com/foonathan/string_id) support to ChaiScript.
 
-#### Install
+### Install
 
 ``` cpp
 #include "chaiscript/extras/string_id.hpp"
@@ -48,7 +48,7 @@ auto string_idlib = chaiscript::extras::string_id::bootstrap();
 chai.add(string_idlib);
 ```
 
-### String Methods
+## String
 
 Adds various string methods to extend how strings can be used in ChaiScript:
 - `string::replace(string, string)`
@@ -57,7 +57,7 @@ Adds various string methods to extend how strings can be used in ChaiScript:
 - `string::toLowerCase()`
 - `string::toUpperCase()`
 
-#### Install
+### Install
 
 ``` cpp
 #include "chaiscript/extras/string_methods.hpp"
@@ -68,7 +68,7 @@ auto stringmethods = chaiscript::extras::string_methods::bootstrap();
 chai.add(stringmethods);
 ```
 
-#### Usage
+### Usage
 
 ``` chaiscript
 var input = "Hello, World!"
