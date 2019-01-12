@@ -56,6 +56,7 @@ Adds various string methods to extend how strings can be used in ChaiScript:
 - `string::split(string)`
 - `string::toLowerCase()`
 - `string::toUpperCase()`
+- `string::includes()`
 
 ### Install
 
