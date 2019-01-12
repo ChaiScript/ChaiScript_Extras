@@ -24,6 +24,8 @@ TEST_CASE( "string_methods functions work", "[string_methods]" ) {
 
   // trim()
   CHECK(chai.eval<std::string>("\"   Hello World!    \".trim()") == "Hello World!");
+  CHECK(chai.eval<std::string>("\"   Hello World!    \".trimStart()") == "Hello World!    ");
+  CHECK(chai.eval<std::string>("\"   Hello World!    \".trimEnd()") == "   Hello World!");
 
   // split()
   CHECK(chai.eval<std::string>("\"Hello,World,How,Are,You\".split(\",\")[1]") == "World");

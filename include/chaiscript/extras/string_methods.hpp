@@ -1,19 +1,21 @@
 /**
  * @file ChaiScript String Methods
  *
- * Adds some additional string methods to ChaiScript strings.
+ * Adds some additional string methods to ChaiScript strings:
  *
- * string::replace(string search, string replace)
- * string::replace(char search, char replace)
- * string::trim()
- * string::split(string token)
- * string::toLowerCase()
- * string::toUpperCase()
- * string::includes(string search)
+ *     string::replace(string search, string replace)
+ *     string::replace(char search, char replace)
+ *     string::trim()
+ *     string::trimStart()
+ *     string::trimEnd()
+ *     string::split(string token)
+ *     string::toLowerCase()
+ *     string::toUpperCase()
+ *     string::includes(string search)
  *
- * To allow selecting indexes from split(), ensure VectorString type is added:
+ * To allow selecting indexes from split(), ensure the vector of strings type is added:
  *
- * chai.add(chaiscript::bootstrap::standard_library::vector_type<std::vector<std::string>>("VectorString"));
+ *     chai.add(chaiscript::bootstrap::standard_library::vector_type<std::vector<std::string>>("VectorString"));
  */
 
 #ifndef CHAISCRIPT_EXTRAS_STRING_METHODS_HPP_
@@ -65,9 +67,29 @@ namespace chaiscript {
        */
       std::string trim(const std::string& subject) {
         std::string result(subject);
-        std::string chars = "\t\n\v\f\r ";
-        result.erase(0, result.find_first_not_of(chars));
-        result.erase(0, result.find_last_not_of(chars));
+        std::string delimiters = "\t\n\v\f\r ";
+        result.erase(0, result.find_first_not_of(delimiters));
+        result.erase(0, result.find_last_not_of(delimiters));
+        return result;
+      }
+
+      /**
+       * Trims the beginning of the given string.
+       */
+      std::string trimStart(const std::string& subject) {
+        std::string result(subject);
+        std::string delimiters = "\t\n\v\f\r ";
+        result.erase(0, result.find_first_not_of(delimiters));
+        return result;
+      }
+
+      /**
+       * Trims the end of the given string.
+       */
+      std::string trimEnd(const std::string& subject) {
+        std::string result(subject);
+        std::string delimiters = "\t\n\v\f\r ";
+        result.erase(result.find_last_not_of(delimiters) + 1);
         return result;
       }
 
@@ -152,6 +174,8 @@ namespace chaiscript {
         m->add(fun(toUpperCase), "toUpperCase");
         m->add(fun(includes), "includes");
         m->add(fun(includesChar), "includes");
+        m->add(fun(trimStart), "trimStart");
+        m->add(fun(trimEnd), "trimEnd");
 
         return m;
       }
