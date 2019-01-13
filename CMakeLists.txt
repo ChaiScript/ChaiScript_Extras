@@ -1,11 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 project(chaiscript_extras)
 
-if(BIICODE)
-  include("biicode.cmake")
-  RETURN()
-endif()
-
 # MINGW does not yet support C++11's concurrency features
 if(MINGW)
   option(MULTITHREAD_SUPPORT_ENABLED "Multithreaded Support Enabled" FALSE)
