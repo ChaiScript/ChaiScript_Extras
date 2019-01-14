@@ -53,9 +53,12 @@ chai.add(string_idlib);
 Adds various string methods to extend how strings can be used in ChaiScript:
 - `string::replace(string, string)`
 - `string::trim()`
+- `string::trimStart()`
+- `string::trimEnd()`
 - `string::split(string)`
 - `string::toLowerCase()`
 - `string::toUpperCase()`
+- `string::includes()`
 
 ### Install
 
