@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.11) # FetchContent requires CMake 3.11
 project(chaiscript_extras)
 
 if(BIICODE)
@@ -14,7 +14,6 @@ else()
 endif()
 
 option(BUILD_IN_CPP17_MODE "Build with C++17 flags" FALSE)
-
 
 if(CMAKE_COMPILER_IS_GNUCC)
   option(ENABLE_COVERAGE "Enable Coverage Reporting in GCC" FALSE)
@@ -75,8 +74,6 @@ endif()
 
 include(CTest)
 enable_testing()
-
-
 
 if(CMAKE_COMPILER_IS_GNUCC)
   execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
@@ -142,7 +139,6 @@ if(MINGW OR CYGWIN)
   add_definitions(-O3)
 endif()
 
-
 if(NOT MULTITHREAD_SUPPORT_ENABLED)
   add_definitions(-DCHAISCRIPT_NO_THREADS)
 endif()
@@ -166,75 +162,11 @@ if(CMAKE_HOST_UNIX)
 
     add_definitions(-pthread)
   endif()
-
 endif()
-
-list(APPEND LIBS ${READLINE_LIB})
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${LINKER_FLAGS}")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${LINKER_FLAGS}")
 set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} ${LINKER_FLAGS}")
 
-# ChaiScript
-set(CHAISCRIPT_BRANCH v5.8.6)
-set(CHAISCRIPT_VERSION 5.8.6)
-file(DOWNLOAD https://github.com/ChaiScript/ChaiScript/archive/${CHAISCRIPT_BRANCH}.tar.gz "${CMAKE_BINARY_DIR}/chaiscript/chaiscript-${CHAISCRIPT_BRANCH}.tar.gz"
-  INACTIVITY_TIMEOUT 180 TIMEOUT 180 TLS_VERIFY off)
-execute_process(COMMAND ${CMAKE_COMMAND} -E tar -xf "${CMAKE_BINARY_DIR}/chaiscript/chaiscript-${CHAISCRIPT_BRANCH}.tar.gz" "${CMAKE_BINARY_DIR}/chaiscript"
-  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/chaiscript")
-include_directories("${CMAKE_BINARY_DIR}/chaiscript/ChaiScript-${CHAISCRIPT_VERSION}/include")
-
-# String ID
-set(STRING_ID_VERSION 674527b0dab0cca9cf846f3084e986d2783357eb)
-file(DOWNLOAD https://github.com/foonathan/string_id/archive/${STRING_ID_VERSION}.tar.gz "${CMAKE_BINARY_DIR}/string_id/string_id-${STRING_ID_VERSION}.tar.gz"
-  INACTIVITY_TIMEOUT 180 TIMEOUT 180 TLS_VERIFY off)
-execute_process(COMMAND ${CMAKE_COMMAND} -E tar -xf "${CMAKE_BINARY_DIR}/string_id/string_id-${STRING_ID_VERSION}.tar.gz" "${CMAKE_BINARY_DIR}/string_id"
-  WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/string_id")
-file(RENAME "${CMAKE_BINARY_DIR}/string_id/string_id-${STRING_ID_VERSION}" "${CMAKE_BINARY_DIR}/string_id/string_id")
-include_directories("${CMAKE_BINARY_DIR}/string_id")
-include_directories("${CMAKE_SOURCE_DIR}/tests")
-
-# Add catch tests macro
-macro(ADD_CATCH_TESTS executable)
-  if (MSVC)
-    file(TO_NATIVE_PATH "${QT_LIBRARY_DIR}" QT_LIB_PATH)
-    set(NEWPATH "${QT_LIB_PATH};$ENV{PATH}")
-  else()
-    set(NEWPATH $ENV{PATH})
-  endif()
-
-  get_target_property(target_files ${executable} SOURCES)
-
-  message("Files: ${target_files}")
-
-  foreach(source ${target_files})
-    if(NOT "${source}" MATCHES "/moc_.*cxx")
-      string(REGEX MATCH .*cpp source "${source}")
-      if(source)
-        file(READ "${source}" contents)
-        string(REGEX MATCHALL "TEST_CASE\\([ ]*\"[^\"]+\"" found_tests ${contents})
-        foreach(hit ${found_tests})
-          message("Found Test: ${hit}")
-          string(REGEX REPLACE "TEST_CASE\\([ ]*(\"[^\"]+\").*" "\\1" test_name ${hit})
-          add_test(${test_name} "${executable}" ${test_name})
-          set_tests_properties(${test_name} PROPERTIES TIMEOUT 660 ENVIRONMENT "PATH=${NEWPATH}")
-        endforeach()
-      endif()
-    endif()
-  endforeach()
-endmacro()
-
-
-
-add_executable(math_test tests/math.cpp)
-target_link_libraries(math_test ${LIBS})
-ADD_CATCH_TESTS(math_test)
-
-# TODO: Fix String ID Tests
-#add_executable(string_id_test tests/string_id.cpp)
-#target_link_libraries(string_id_test ${LIBS})
-#ADD_CATCH_TESTS(string_id_test)
-
-add_executable(string_methods_test tests/string_methods.cpp)
-target_link_libraries(string_methods_test ${LIBS})
-ADD_CATCH_TESTS(string_methods_test)
+add_subdirectory(cmake)
+add_subdirectory(tests)
