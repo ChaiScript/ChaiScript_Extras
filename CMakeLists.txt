@@ -1,11 +1,6 @@
 cmake_minimum_required(VERSION 3.11) # FetchContent requires CMake 3.11
 project(chaiscript_extras)
 
-if(BIICODE)
-  include("biicode.cmake")
-  RETURN()
-endif()
-
 # MINGW does not yet support C++11's concurrency features
 if(MINGW)
   option(MULTITHREAD_SUPPORT_ENABLED "Multithreaded Support Enabled" FALSE)
