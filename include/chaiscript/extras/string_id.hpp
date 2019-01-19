@@ -9,8 +9,6 @@
 #include <string_id/database.hpp>
 #include <string_id/basic_database.hpp>
 
-
-
 namespace chaiscript {
   namespace extras {
     namespace string_id {
