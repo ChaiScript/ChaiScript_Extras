@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.11) # FetchContent requires CMake 3.11
+cmake_minimum_required(VERSION 3.16)
 project(chaiscript_extras)
 
 # MINGW does not yet support C++11's concurrency features
