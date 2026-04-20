@@ -50,3 +50,9 @@ add_executable(string_methods_test string_methods.cpp)
 target_link_libraries(string_methods_test ${LIBS})
 target_include_directories(string_methods_test PUBLIC "${chaiscript_SOURCE_DIR}/include")
 ADD_CATCH_TESTS(string_methods_test)
+
+# Regex
+add_executable(regex_test regex.cpp)
+target_link_libraries(regex_test ${LIBS})
+target_include_directories(regex_test PUBLIC "${chaiscript_SOURCE_DIR}/include")
+ADD_CATCH_TESTS(regex_test)
