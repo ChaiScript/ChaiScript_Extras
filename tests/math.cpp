@@ -7,6 +7,35 @@
 
 #include <iostream>
 
+TEST_CASE( "Math namespace works", "[math]" ) {
+  chaiscript::ChaiScript chai;
+  chaiscript::extras::math::bootstrap_namespace(chai);
+  chai.eval(R"(import("math"))");
+
+  // Trig
+  CHECK(chai.eval<double>("math.cos(0.5)") == std::cos(0.5));
+  CHECK(chai.eval<double>("math.sin(0.5)") == std::sin(0.5));
+  CHECK(chai.eval<double>("math.tan(0.5)") == std::tan(0.5));
+  CHECK(chai.eval<double>("math.acos(0.5)") == std::acos(0.5));
+  CHECK(chai.eval<double>("math.asin(0.5)") == std::asin(0.5));
+  CHECK(chai.eval<double>("math.atan(0.5)") == std::atan(0.5));
+  CHECK(chai.eval<double>("math.atan2(0.5, 0.5)") == std::atan2(0.5, 0.5));
+
+  // Power
+  CHECK(chai.eval<double>("math.pow(0.5, 3.0)") == std::pow(0.5, 3.0));
+  CHECK(chai.eval<double>("math.sqrt(0.5)") == std::sqrt(0.5));
+
+  // Rounding
+  CHECK(chai.eval<double>("math.ceil(0.5)") == std::ceil(0.5));
+  CHECK(chai.eval<double>("math.floor(0.5)") == std::floor(0.5));
+  CHECK(chai.eval<double>("math.abs(-0.5)") == std::abs(-0.5));
+
+  // Exponential
+  CHECK(chai.eval<double>("math.exp(0.5)") == std::exp(0.5));
+  CHECK(chai.eval<double>("math.log(0.5)") == std::log(0.5));
+  CHECK(chai.eval<double>("math.log10(0.5)") == std::log10(0.5));
+}
+
 TEST_CASE( "Math functions work", "[math]" ) {
   auto mathlib = chaiscript::extras::math::bootstrap();
 

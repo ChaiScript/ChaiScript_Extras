@@ -828,6 +828,121 @@ namespace chaiscript {
 
         return m;
       }
+
+      /// \brief Registers a "math" namespace on the given ChaiScript engine,
+      ///        exposing the standard C++ math functions as attributes of
+      ///        the namespace (e.g. \c math.cos(x), \c math.sqrt(x)).
+      ///
+      /// Uses ChaiScript's native \c register_namespace API so that the
+      /// functions live inside a real namespace object rather than being
+      /// attached to a global variable. The namespace is lazily populated
+      /// when it is first imported.
+      inline void bootstrap_namespace(chaiscript::ChaiScript &chai)
+      {
+        chai.register_namespace([](chaiscript::Namespace &math) {
+          // TRIG FUNCTIONS
+          math["cos"]   = chaiscript::var(chaiscript::fun([](double p){ return std::cos(p); }));
+          math["sin"]   = chaiscript::var(chaiscript::fun([](double p){ return std::sin(p); }));
+          math["tan"]   = chaiscript::var(chaiscript::fun([](double p){ return std::tan(p); }));
+          math["acos"]  = chaiscript::var(chaiscript::fun([](double p){ return std::acos(p); }));
+          math["asin"]  = chaiscript::var(chaiscript::fun([](double p){ return std::asin(p); }));
+          math["atan"]  = chaiscript::var(chaiscript::fun([](double p){ return std::atan(p); }));
+          math["atan2"] = chaiscript::var(chaiscript::fun([](double y, double x){ return std::atan2(y, x); }));
+
+          // HYPERBOLIC FUNCTIONS
+          math["cosh"] = chaiscript::var(chaiscript::fun([](double p){ return std::cosh(p); }));
+          math["sinh"] = chaiscript::var(chaiscript::fun([](double p){ return std::sinh(p); }));
+          math["tanh"] = chaiscript::var(chaiscript::fun([](double p){ return std::tanh(p); }));
+
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
+          math["acosh"] = chaiscript::var(chaiscript::fun([](double p){ return std::acosh(p); }));
+          math["asinh"] = chaiscript::var(chaiscript::fun([](double p){ return std::asinh(p); }));
+          math["atanh"] = chaiscript::var(chaiscript::fun([](double p){ return std::atanh(p); }));
+#endif
+
+          // EXPONENTIAL AND LOGARITHMIC FUNCTIONS
+          math["exp"]   = chaiscript::var(chaiscript::fun([](double p){ return std::exp(p); }));
+          math["log"]   = chaiscript::var(chaiscript::fun([](double p){ return std::log(p); }));
+          math["log10"] = chaiscript::var(chaiscript::fun([](double p){ return std::log10(p); }));
+
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
+          math["exp2"]  = chaiscript::var(chaiscript::fun([](double p){ return std::exp2(p); }));
+          math["expm1"] = chaiscript::var(chaiscript::fun([](double p){ return std::expm1(p); }));
+          math["ilogb"] = chaiscript::var(chaiscript::fun([](double p){ return std::ilogb(p); }));
+          math["log1p"] = chaiscript::var(chaiscript::fun([](double p){ return std::log1p(p); }));
+          math["log2"]  = chaiscript::var(chaiscript::fun([](double p){ return std::log2(p); }));
+          math["logb"]  = chaiscript::var(chaiscript::fun([](double p){ return std::logb(p); }));
+#endif
+
+          // POWER FUNCTIONS
+          math["pow"]  = chaiscript::var(chaiscript::fun([](double x, double y){ return std::pow(x, y); }));
+          math["sqrt"] = chaiscript::var(chaiscript::fun([](double p){ return std::sqrt(p); }));
+
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
+          math["cbrt"]  = chaiscript::var(chaiscript::fun([](double p){ return std::cbrt(p); }));
+          math["hypot"] = chaiscript::var(chaiscript::fun([](double x, double y){ return std::hypot(x, y); }));
+
+          // ERROR AND GAMMA FUNCTIONS
+          math["erf"]    = chaiscript::var(chaiscript::fun([](double p){ return std::erf(p); }));
+          math["erfc"]   = chaiscript::var(chaiscript::fun([](double p){ return std::erfc(p); }));
+          math["tgamma"] = chaiscript::var(chaiscript::fun([](double p){ return std::tgamma(p); }));
+          math["lgamma"] = chaiscript::var(chaiscript::fun([](double p){ return std::lgamma(p); }));
+#endif
+
+          // ROUNDING AND REMAINDER FUNCTIONS
+          math["ceil"]  = chaiscript::var(chaiscript::fun([](double p){ return std::ceil(p); }));
+          math["floor"] = chaiscript::var(chaiscript::fun([](double p){ return std::floor(p); }));
+          math["fmod"]  = chaiscript::var(chaiscript::fun([](double x, double y){ return std::fmod(x, y); }));
+
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
+          math["trunc"]     = chaiscript::var(chaiscript::fun([](double p){ return std::trunc(p); }));
+          math["round"]     = chaiscript::var(chaiscript::fun([](double p){ return std::round(p); }));
+          math["lround"]    = chaiscript::var(chaiscript::fun([](double p){ return std::lround(p); }));
+          math["llround"]   = chaiscript::var(chaiscript::fun([](double p){ return std::llround(p); }));
+          math["rint"]      = chaiscript::var(chaiscript::fun([](double p){ return std::rint(p); }));
+          math["lrint"]     = chaiscript::var(chaiscript::fun([](double p){ return std::lrint(p); }));
+          math["llrint"]    = chaiscript::var(chaiscript::fun([](double p){ return std::llrint(p); }));
+          math["nearbyint"] = chaiscript::var(chaiscript::fun([](double p){ return std::nearbyint(p); }));
+          math["remainder"] = chaiscript::var(chaiscript::fun([](double x, double y){ return std::remainder(x, y); }));
+
+          // FLOATING-POINT MANIPULATION FUNCTIONS
+          math["copysign"]   = chaiscript::var(chaiscript::fun([](double x, double y){ return std::copysign(x, y); }));
+          math["nextafter"]  = chaiscript::var(chaiscript::fun([](double x, double y){ return std::nextafter(x, y); }));
+          math["nexttoward"] = chaiscript::var(chaiscript::fun([](double x, long double y){ return std::nexttoward(x, y); }));
+
+          // MINIMUM, MAXIMUM, DIFFERENCE FUNCTIONS
+          math["fdim"] = chaiscript::var(chaiscript::fun([](double x, double y){ return std::fdim(x, y); }));
+          math["fmax"] = chaiscript::var(chaiscript::fun([](double x, double y){ return std::fmax(x, y); }));
+          math["fmin"] = chaiscript::var(chaiscript::fun([](double x, double y){ return std::fmin(x, y); }));
+
+          // OTHER FUNCTIONS
+          math["fabs"] = chaiscript::var(chaiscript::fun([](double p){ return std::fabs(p); }));
+#endif
+
+          math["abs"] = chaiscript::var(chaiscript::fun([](double p){ return std::abs(p); }));
+
+#ifndef CHAISCRIPT_EXTRAS_MATH_SKIP_ADVANCED
+          math["fma"] = chaiscript::var(chaiscript::fun([](double x, double y, double z){ return std::fma(x, y, z); }));
+
+          // CLASSIFICATION FUNCTIONS
+          math["fpclassify"] = chaiscript::var(chaiscript::fun([](double p){ return std::fpclassify(p); }));
+#endif
+
+          math["isfinite"] = chaiscript::var(chaiscript::fun([](double p){ return std::isfinite(p); }));
+          math["isinf"]    = chaiscript::var(chaiscript::fun([](double p){ return std::isinf(p); }));
+          math["isnan"]    = chaiscript::var(chaiscript::fun([](double p){ return std::isnan(p); }));
+          math["isnormal"] = chaiscript::var(chaiscript::fun([](double p){ return std::isnormal(p); }));
+          math["signbit"]  = chaiscript::var(chaiscript::fun([](double p){ return std::signbit(p); }));
+
+          // COMPARISON FUNCTIONS
+          math["isgreater"]      = chaiscript::var(chaiscript::fun([](double x, double y){ return std::isgreater(x, y); }));
+          math["isgreaterequal"] = chaiscript::var(chaiscript::fun([](double x, double y){ return std::isgreaterequal(x, y); }));
+          math["isless"]         = chaiscript::var(chaiscript::fun([](double x, double y){ return std::isless(x, y); }));
+          math["islessequal"]    = chaiscript::var(chaiscript::fun([](double x, double y){ return std::islessequal(x, y); }));
+          math["islessgreater"]  = chaiscript::var(chaiscript::fun([](double x, double y){ return std::islessgreater(x, y); }));
+          math["isunordered"]    = chaiscript::var(chaiscript::fun([](double x, double y){ return std::isunordered(x, y); }));
+        }, "math");
+      }
     }
   }
 }
